@@ -6,7 +6,7 @@ namespace HybridScaffolding
 {
     public static class HybridExecutor
     {
-        
+
         public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type formToRun)
         {
             scaffold.RunType = ParentProcess.ConsoleScaffolding();
@@ -19,8 +19,8 @@ namespace HybridScaffolding
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                scaffold.PreGuiExec();
-                Application.Run((Form)Activator.CreateInstance(formToRun));
+                var formtoRun = scaffold.PreGuiExec((Form)Activator.CreateInstance(formToRun));
+                Application.Run(formtoRun);
             }
             else
             {

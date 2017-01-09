@@ -1,4 +1,6 @@
-﻿namespace HybridScaffolding
+﻿using System.Windows.Forms;
+
+namespace HybridScaffolding
 {
     public abstract class HybridScaffold
     {
@@ -12,7 +14,7 @@
             return null;
         }
 
-        public virtual int? PreGuiExec()
+        public virtual Form PreGuiExec(Form formToUse)
         {
             return null;
         }

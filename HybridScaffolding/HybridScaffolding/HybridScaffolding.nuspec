@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/ChadRoesler/HybridScaffolding</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Release.</releaseNotes>
+    <releaseNotes>Alteration to PreGuiExec to allow for form variable handling</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Console,Hybrid Application,Forms</tags>
   </metadata>
