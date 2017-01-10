@@ -69,44 +69,44 @@ namespace HybridScaffolding
             }
         }
 
-        internal static string ConsoleScaffolding()
+        internal static RunTypes ConsoleScaffolding()
         {
             var command = GetParentProcess();
             var process = GetParentProcess(command.Id);
-            string runType = string.Empty;
+            var runType = RunTypes.Console;
             try
             {
                 if (process.ProcessName == "cmd" || process.ProcessName.Contains("powershell"))
                 {
                     //Octopus running seems to require this
                     AttachConsole(process.Id);
-                    runType = "console";
+                    runType = RunTypes.Console;
                 }
                 else if (command.ProcessName == "cmd" || command.ProcessName.Contains("powershell"))
                 {
                     //running from cmd or posh locally
                     AttachConsole(-1);
-                    runType = "console";
+                    runType = RunTypes.Console;
                 }
                 else if (process.ProcessName == "explorer" || process.ProcessName == "svchost")
                 {
-                    runType = "form";
+                    runType = RunTypes.Gui;
                 }
                 else if(command.ProcessName == "explorer" || command.ProcessName == "svchost")
                 {
-                    runType = "form";
+                    runType = RunTypes.Gui;
                 }
                 else
                 {
                     //no console AND we're in console mode ... create a new console.
                     AllocConsole();
-                    runType = "console";
+                    runType = RunTypes.Console;
                 }
             }
             catch
             {
                 AttachConsole(-1);
-                runType = "console";
+                runType = RunTypes.Console;
             }
             return runType;
         }

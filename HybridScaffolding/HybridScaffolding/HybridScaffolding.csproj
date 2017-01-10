@@ -46,6 +46,7 @@
     <Compile Include="ParentProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HybridScaffold.cs" />
+    <Compile Include="RunTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HybridScaffolding.nuspec" />
