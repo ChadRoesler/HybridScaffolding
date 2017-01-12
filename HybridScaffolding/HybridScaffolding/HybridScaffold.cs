@@ -2,25 +2,21 @@
 
 namespace HybridScaffolding
 {
+    /// <summary>
+    /// The abstract class used for implmenting the overrides for pre and console execution.
+    /// </summary>
     public abstract class HybridScaffold
     {
         /// <summary>
-        /// Instantiate the Scaffold
+        /// Returns and Sets the determined runtype.
         /// </summary>
-        public HybridScaffold()
-        {
-        }
-
-        /// <summary>
-        /// Used for Returning the Run type in for any specific error handling.
-        /// </summary>
-        public RunTypes RunType { get; set; }
+        public RunTypes RunType { get; internal set; }
 
         /// <summary>
         /// Runs pre Console Execution, also allows for manipulation of the arguments as needed.
         /// </summary>
-        /// <param name="arguments"></param>
-        /// <returns></returns>
+        /// <param name="arguments">The console arguments.</param>
+        /// <returns>Returns the console arguments passed.</returns>
         public virtual string[] PreConsoleExec(string[] arguments)
         {
             return arguments;
@@ -29,18 +25,18 @@ namespace HybridScaffolding
         /// <summary>
         /// Runs pre Gui Execution, also allows for manipuation of the forms as needed.
         /// </summary>
-        /// <param name="formToUse"></param>
-        /// <returns></returns>
-        public virtual Form PreGuiExec(Form formToUse)
+        /// <param name="mainForm">The form to display.</param>
+        /// <returns>Returns the Form passed.</returns>
+        public virtual Form PreGuiExec(Form mainForm)
         {
-            return formToUse;
+            return mainForm;
         }
 
         /// <summary>
         /// This is what the Console will execute.
         /// </summary>
-        /// <param name="arguments"></param>
-        /// <returns></returns>
+        /// <param name="arguments">The console arguments.</param>
+        /// <returns>Void</returns>
         public virtual void ConsoleMain(string[] arguments)
         {
         }

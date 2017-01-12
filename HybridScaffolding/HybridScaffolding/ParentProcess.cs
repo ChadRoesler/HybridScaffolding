@@ -68,7 +68,10 @@ namespace HybridScaffolding
                 return null;
             }
         }
-
+        /// <summary>
+        /// Gathers the run type and attaches the console for the selected run type.
+        /// </summary>
+        /// <returns>The RunType of the application</returns>
         internal static RunTypes ConsoleScaffolding()
         {
             var command = GetParentProcess();
