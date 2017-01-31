@@ -18,7 +18,7 @@ namespace HybridScaffolding
         public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type mainFormType)
         {
             scaffold.RunType = ParentProcess.ConsoleScaffolding();
-            if (arguments != null && mainFormType != null && arguments.Length > 0)
+            if (arguments == null && mainFormType == null)
             {
                 throw new InvalidOperationException("Unable to locate arguments to execute against or a form to display.\r\nPlease check the variables passed.");
             }
@@ -37,7 +37,14 @@ namespace HybridScaffolding
                             Application.EnableVisualStyles();
                             Application.SetCompatibleTextRenderingDefault(false);
                             var outputForm = scaffold.PreGuiExec((Form)Activator.CreateInstance(mainFormType));
-                            Application.Run(outputForm);
+                            if (outputForm == null)
+                            {
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                Application.Run(outputForm);
+                            }
                         }
                         break;
                 }

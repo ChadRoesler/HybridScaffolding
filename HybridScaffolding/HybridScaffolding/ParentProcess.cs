@@ -91,11 +91,11 @@ namespace HybridScaffolding
                     AttachConsole(-1);
                     runType = RunTypes.Console;
                 }
-                else if (process.ProcessName == "explorer" || process.ProcessName == "svchost")
+                else if (process.ProcessName == "explorer" || process.ProcessName == "svchost" || process.ProcessName == "userinit")
                 {
                     runType = RunTypes.Gui;
                 }
-                else if(command.ProcessName == "explorer" || command.ProcessName == "svchost")
+                else if(command.ProcessName == "explorer" || command.ProcessName == "svchost" || command.ProcessName == "userinit")
                 {
                     runType = RunTypes.Gui;
                 }
