@@ -79,7 +79,7 @@ namespace HybridScaffolding
             var runType = RunTypes.Console;
             try
             {
-                if (process.ProcessName == "cmd" || process.ProcessName.Contains("powershell"))
+                if (process != null && (process.ProcessName == "cmd" || process.ProcessName.Contains("powershell")))
                 {
                     //Octopus running seems to require this
                     AttachConsole(process.Id);
@@ -91,7 +91,7 @@ namespace HybridScaffolding
                     AttachConsole(-1);
                     runType = RunTypes.Console;
                 }
-                else if (process.ProcessName == "explorer" || process.ProcessName == "svchost" || process.ProcessName == "userinit")
+                else if (process != null && (process.ProcessName == "explorer" || process.ProcessName == "svchost" || process.ProcessName == "userinit"))
                 {
                     runType = RunTypes.Gui;
                 }
