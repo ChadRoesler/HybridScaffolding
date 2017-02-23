@@ -11,6 +11,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>Correction for null arguments and parent process updates for windows 10 launching.</tags>
+    <tags>Correction to add VS debug launching.</tags>
   </metadata>
 </package>
