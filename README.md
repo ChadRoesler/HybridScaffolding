@@ -22,6 +22,10 @@ static void Main(string[] arguments)
         {
             Console.WriteLine(ex.Message);
         }
+        if(yourScaffold.RunType == RunTypes.Powershell)
+        {
+            PoshHandler.WriteError(ex.Message)
+        }
         if(yourScaffold.RunType == RunTypes.Gui)
         {
             MessageBox.Show(ex.Message);
