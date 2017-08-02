@@ -17,7 +17,7 @@ namespace HybridScaffolding
         /// </summary>
         /// <param name="arguments">The console arguments.</param>
         /// <returns>Returns the console arguments passed.</returns>
-        public virtual string[] PreConsoleExec(string[] arguments)
+        public virtual string[] PreConsoleExec(string[] arguments, RunTypes runType)
         {
             return arguments;
         }
@@ -37,7 +37,7 @@ namespace HybridScaffolding
         /// </summary>
         /// <param name="arguments">The console arguments.</param>
         /// <returns>Void</returns>
-        public virtual void ConsoleMain(string[] arguments)
+        public virtual void ConsoleMain(string[] arguments, RunTypes runType)
         {
         }
     }

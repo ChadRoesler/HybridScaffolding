@@ -79,17 +79,25 @@ namespace HybridScaffolding
             var runType = RunTypes.Console;
             try
             {
-                if (process != null && (process.ProcessName == "cmd" || process.ProcessName.Contains("powershell")))
+                if (process != null && process.ProcessName == "cmd")
                 {
-                    //Octopus running seems to require this
                     AttachConsole(process.Id);
                     runType = RunTypes.Console;
                 }
-                else if (command.ProcessName == "cmd" || command.ProcessName.Contains("powershell"))
+                else if (command.ProcessName == "cmd")
                 {
-                    //running from cmd or posh locally
                     AttachConsole(-1);
                     runType = RunTypes.Console;
+                }
+                else if (process != null && process.ProcessName.Contains("powershell"))
+                {
+                    AttachConsole(process.Id);
+                    runType = RunTypes.Powershell;
+                }
+                else if (command.ProcessName.Contains("powershell"))
+                {
+                    AttachConsole(-1);
+                    runType = RunTypes.Powershell;
                 }
                 else if (process != null && (process.ProcessName == "explorer" || process.ProcessName == "svchost" || process.ProcessName == "userinit" || process.ProcessName == "devenv"))
                 {
@@ -101,7 +109,6 @@ namespace HybridScaffolding
                 }
                 else
                 {
-                    //no console AND we're in console mode ... create a new console.
                     AllocConsole();
                     runType = RunTypes.Console;
                 }

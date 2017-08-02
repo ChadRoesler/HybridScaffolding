@@ -27,9 +27,10 @@ namespace HybridScaffolding
                 switch (scaffold.RunType)
                 {
                     case RunTypes.Console:
+                    case RunTypes.Powershell:
                         {
-                            var outputArguments = scaffold.PreConsoleExec(arguments);
-                            scaffold.ConsoleMain(outputArguments);
+                            var outputArguments = scaffold.PreConsoleExec(arguments, scaffold.RunType);
+                            scaffold.ConsoleMain(outputArguments, scaffold.RunType);
                         }
                         break;
                     case RunTypes.Gui:

@@ -11,6 +11,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>Correction to add VS debug launching.</tags>
+    <tags>Powershell now is its own run type, adds for alotment when handing execution of your application via powershell.</tags>
   </metadata>
 </package>

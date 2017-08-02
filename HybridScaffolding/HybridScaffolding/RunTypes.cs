@@ -6,13 +6,18 @@
     public enum RunTypes
     {
         /// <summary>
-        /// Either run from the Command Prompt or PowerShell
+        /// Run from the Command Prompt
         /// </summary>
         Console = 0,
 
         /// <summary>
+        /// Run from Powershell
+        /// </summary>
+        Powershell = 1,
+
+        /// <summary>
         /// Either run by svchost or explorer.
         /// </summary>
-        Gui = 1
+        Gui = 2
     }
 }
