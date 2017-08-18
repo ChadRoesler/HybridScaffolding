@@ -7,7 +7,7 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/ChadRoesler/HybridScaffolding</projectUrl>
-    <iconUrl></iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/ChadRoesler/HybridScaffolding/master/HybridScaffolding/HybridScaffolding/Resouces/Icons/HybridScaffolding.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
