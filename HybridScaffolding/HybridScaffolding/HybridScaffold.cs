@@ -36,6 +36,7 @@ namespace HybridScaffolding
         /// This is what the Console will execute.
         /// </summary>
         /// <param name="arguments">The console arguments.</param>
+        /// <param name="runType">Powershell or cmd.</param>
         /// <returns>Void</returns>
         public virtual void ConsoleMain(string[] arguments, RunTypes runType)
         {
