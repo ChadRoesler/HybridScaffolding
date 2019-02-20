@@ -1,5 +1,5 @@
 # HybridScaffolding
-
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/ChadRoesler/hybridscaffolding?retina=true)](https://ci.appveyor.com/api/projects/status/github/ChadRoesler/hybridscaffolding?retina=true)
 
 Parent process code used from:
 http://stackoverflow.com/questions/394816/how-to-get-parent-process-in-net-in-managed-way/3346055#3346055
