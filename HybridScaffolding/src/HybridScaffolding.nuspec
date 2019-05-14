@@ -7,10 +7,10 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/ChadRoesler/HybridScaffolding</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/ChadRoesler/HybridScaffolding/master/HybridScaffolding/HybridScaffolding/Resouces/Icons/HybridScaffolding.ico</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/ChadRoesler/HybridScaffolding/master/HybridScaffolding/src/Resouces/Icons/HybridScaffolding.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>Updating stuff that i am bad at updating</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Console CommandLine Forms HybridApplication Powershell</tags>
   </metadata>
