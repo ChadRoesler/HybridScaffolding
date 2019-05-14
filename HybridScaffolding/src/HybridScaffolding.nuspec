@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>Documentation updates and Reorganization.</tags>
+    <tags>Console CommandLine Forms HybridApplication Powershell</tags>
   </metadata>
 </package>
