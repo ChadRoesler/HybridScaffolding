@@ -80,6 +80,7 @@ namespace HybridScaffolding
             var command = GetParentProcess();
             var process = GetParentProcess(command.Id);
             var runType = RunTypes.Console;
+
             try
             {
                 if (process != null && process.ProcessName == ResourceStrings.CmdProcessName)
@@ -102,11 +103,11 @@ namespace HybridScaffolding
                     AttachConsole(-1);
                     runType = RunTypes.Powershell;
                 }
-                else if (process != null && (process.ProcessName == ResourceStrings.ExplorerProcessName || process.ProcessName == ResourceStrings.SvcHostProcessName || process.ProcessName == ResourceStrings.UserInitProcessName || process.ProcessName == ResourceStrings.DevEnvProcessName))
+                else if (process != null && (process.ProcessName == ResourceStrings.ExplorerProcessName || process.ProcessName == ResourceStrings.SvcHostProcessName || process.ProcessName == ResourceStrings.UserInitProcessName || process.ProcessName == ResourceStrings.DevEnvProcessName || process.ProcessName == ResourceStrings.IisExpressProcessName))
                 {
                     runType = RunTypes.Gui;
                 }
-                else if(command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName)
+                else if(command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName)
                 {
                     runType = RunTypes.Gui;
                 }
