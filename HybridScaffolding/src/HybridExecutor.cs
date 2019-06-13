@@ -17,7 +17,11 @@ namespace HybridScaffolding
         /// <param name="mainFormType">The form to display.</param>
         public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type mainFormType)
         {
-            scaffold.RunType = ParentProcess.ConsoleScaffolding();
+            var processInfo = ParentProcess.ConsoleScaffolding();
+            scaffold.RunType = processInfo.RunType;
+            scaffold.ProcessName = processInfo.ProcessName;
+            scaffold.CommandName = processInfo.CommandName;
+
             if (arguments == null && mainFormType == null)
             {
                 throw new InvalidOperationException(ErrorStrings.InvalidOpperationError);

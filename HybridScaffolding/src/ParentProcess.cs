@@ -74,12 +74,13 @@ namespace HybridScaffolding
         /// Gathers the run type and attaches the console for the selected run type.
         /// Always pick the process over the command
         /// </summary>
-        /// <returns>The RunType of the application</returns>
-        internal static RunTypes ConsoleScaffolding()
+        /// <returns>The ProcessInfo</returns>
+        internal static ProcessInfo ConsoleScaffolding()
         {
             var command = GetParentProcess();
             var process = GetParentProcess(command.Id);
             var runType = RunTypes.Console;
+
 
             try
             {
@@ -107,7 +108,7 @@ namespace HybridScaffolding
                 {
                     runType = RunTypes.Gui;
                 }
-                else if(command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName)
+                else if (command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName)
                 {
                     runType = RunTypes.Gui;
                 }
@@ -122,7 +123,12 @@ namespace HybridScaffolding
                 AttachConsole(-1);
                 runType = RunTypes.Console;
             }
-            return runType;
+            var processInfo = new ProcessInfo();
+            processInfo.RunType = runType;
+            processInfo.CommandName = command.ProcessName;
+            processInfo.ProcessName = process.ProcessName;
+
+            return processInfo;
         }
     }
 }

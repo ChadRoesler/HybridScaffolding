@@ -13,6 +13,16 @@ namespace HybridScaffolding
         public RunTypes RunType { get; internal set; }
 
         /// <summary>
+        /// Returns and Sets the determined processname.
+        /// </summary>
+        public string ProcessName { get; internal set; }
+
+        /// <summary>
+        /// Returns and Sets the determined commandname.
+        /// </summary>
+        public string CommandName { get; internal set; }
+
+        /// <summary>
         /// Runs pre Console Execution, also allows for manipulation of the arguments as needed.
         /// </summary>
         /// <param name="arguments">The console arguments.</param>
