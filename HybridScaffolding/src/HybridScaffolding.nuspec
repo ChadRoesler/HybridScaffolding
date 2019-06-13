@@ -10,7 +10,7 @@
     <iconUrl>https://raw.githubusercontent.com/ChadRoesler/HybridScaffolding/master/HybridScaffolding/src/Resouces/Icons/HybridScaffolding.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Preping for netcore mvc apps</releaseNotes>
+    <releaseNotes>Adding Features that the netcore version has</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Console CommandLine Forms HybridApplication Powershell</tags>
   </metadata>
