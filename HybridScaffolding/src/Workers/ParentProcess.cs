@@ -3,8 +3,10 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HybridScaffolding.Constants;
+using HybridScaffolding.Enums;
+using HybridScaffolding.Models;
 
-namespace HybridScaffolding
+namespace HybridScaffolding.Workers
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct ParentProcess
