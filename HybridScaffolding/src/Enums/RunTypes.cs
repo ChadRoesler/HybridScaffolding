@@ -1,4 +1,4 @@
-﻿namespace HybridScaffolding
+﻿namespace HybridScaffolding.Enums
 {
     /// <summary>
     /// The determined RunTypes

@@ -1,4 +1,6 @@
-﻿namespace HybridScaffolding
+﻿using HybridScaffolding.Enums;
+
+namespace HybridScaffolding.Models
 {
     internal class ProcessInfo
     {

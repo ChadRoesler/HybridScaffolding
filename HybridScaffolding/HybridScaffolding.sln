@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridScaffolding", "src\HybridScaffolding.csproj", "{1FE599AF-D763-439B-88F8-D8D77272E550}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridScaffolding", "src\HybridScaffolding.csproj", "{8534187C-D215-4030-B2DE-DC177CB54B2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1FE599AF-D763-439B-88F8-D8D77272E550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FE599AF-D763-439B-88F8-D8D77272E550}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FE599AF-D763-439B-88F8-D8D77272E550}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FE599AF-D763-439B-88F8-D8D77272E550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8534187C-D215-4030-B2DE-DC177CB54B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8534187C-D215-4030-B2DE-DC177CB54B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8534187C-D215-4030-B2DE-DC177CB54B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8534187C-D215-4030-B2DE-DC177CB54B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AC84FE96-B8A2-4F0C-8015-CA72BFEA70FE}
+		SolutionGuid = {5AEC1DF4-0095-4573-A0B2-7CA8E192DCB4}
 	EndGlobalSection
 EndGlobal

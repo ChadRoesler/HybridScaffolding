@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+﻿using HybridScaffolding.Enums;
 
 namespace HybridScaffolding
 {
@@ -36,11 +36,12 @@ namespace HybridScaffolding
         /// <summary>
         /// Runs pre Gui Execution, also allows for manipuation of the forms as needed.
         /// </summary>
-        /// <param name="mainForm">The form to display.</param>
+        /// /// <param name="arguments">The console arguments.</param>
+        /// <param name="passableObject">The object to manage.</param>
         /// <returns>Returns the Form passed.</returns>
-        public virtual Form PreGuiExec(Form mainForm)
+        public virtual object PreGuiExec(string[] arguments, object passableObject)
         {
-            return mainForm;
+            return passableObject;
         }
 
         /// <summary>
@@ -50,6 +51,16 @@ namespace HybridScaffolding
         /// <param name="runType">Powershell or cmd.</param>
         /// <returns>Void</returns>
         public virtual void ConsoleMain(string[] arguments, RunTypes runType)
+        {
+        }
+
+        /// <summary>
+        /// This is what the GUI will execute.
+        /// </summary>
+        /// <param name="arguments">The console arguments.</param>
+        /// <param name="passableObkect">The object to manage.</param>
+        /// <returns>Void</returns>
+        public virtual void GuiMain(string[] arguments, object passableObkect)
         {
         }
     }

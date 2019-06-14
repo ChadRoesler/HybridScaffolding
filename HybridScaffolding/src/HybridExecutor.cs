@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using HybridScaffolding.Constants;
+using HybridScaffolding.Enums;
+using HybridScaffolding.Workers;
 
 namespace HybridScaffolding
 {
@@ -14,15 +15,15 @@ namespace HybridScaffolding
         /// </summary>
         /// <param name="scaffold">The scaffold built.</param>
         /// <param name="arguments">The console arguments.</param>
-        /// <param name="mainFormType">The form to display.</param>
-        public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type mainFormType)
+        /// <param name="type">The object to pass.</param>
+        public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type type)
         {
             var processInfo = ParentProcess.ConsoleScaffolding();
             scaffold.RunType = processInfo.RunType;
             scaffold.ProcessName = processInfo.ProcessName;
             scaffold.CommandName = processInfo.CommandName;
 
-            if (arguments == null && mainFormType == null)
+            if (arguments == null && type == null)
             {
                 throw new InvalidOperationException(ErrorStrings.InvalidOpperationError);
             }
@@ -39,17 +40,8 @@ namespace HybridScaffolding
                         break;
                     case RunTypes.Gui:
                         {
-                            Application.EnableVisualStyles();
-                            Application.SetCompatibleTextRenderingDefault(false);
-                            var outputForm = scaffold.PreGuiExec((Form)Activator.CreateInstance(mainFormType));
-                            if (outputForm == null)
-                            {
-                                Application.Exit();
-                            }
-                            else
-                            {
-                                Application.Run(outputForm);
-                            }
+                            var outputObject = scaffold.PreGuiExec(arguments, (object)Activator.CreateInstance(type));
+                            scaffold.GuiMain(arguments, outputObject);
                         }
                         break;
                 }
