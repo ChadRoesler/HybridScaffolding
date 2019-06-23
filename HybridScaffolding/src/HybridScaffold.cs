@@ -58,9 +58,9 @@ namespace HybridScaffolding
         /// This is what the GUI will execute.
         /// </summary>
         /// <param name="arguments">The console arguments.</param>
-        /// <param name="passableObkect">The object to manage.</param>
+        /// <param name="passableObject">The object to manage.</param>
         /// <returns>Void</returns>
-        public virtual void GuiMain(string[] arguments, object passableObkect)
+        public virtual void GuiMain(string[] arguments, object passableObject)
         {
         }
     }
