@@ -106,6 +106,16 @@ namespace HybridScaffolding.Workers
                     AttachConsole(-1);
                     runType = RunTypes.Powershell;
                 }
+                else if (process != null && process.ProcessName.Contains(ResourceStrings.PwshProcessName))
+                {
+                    AttachConsole(process.Id);
+                    runType = RunTypes.Powershell;
+                }
+                else if (command.ProcessName.Contains(ResourceStrings.PwshProcessName))
+                {
+                    AttachConsole(process.Id);
+                    runType = RunTypes.Powershell;
+                }
                 else if (process != null && (process.ProcessName == ResourceStrings.ExplorerProcessName || process.ProcessName == ResourceStrings.SvcHostProcessName || process.ProcessName == ResourceStrings.UserInitProcessName || process.ProcessName == ResourceStrings.DevEnvProcessName || process.ProcessName == ResourceStrings.IisExpressProcessName))
                 {
                     runType = RunTypes.Gui;

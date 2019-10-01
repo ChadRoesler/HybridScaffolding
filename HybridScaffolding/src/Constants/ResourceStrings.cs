@@ -4,6 +4,7 @@
     {
         internal const string CmdProcessName = "cmd";
         internal const string PowerShellProcessName = "powershell";
+        internal const string PwshProcessName = "pwsh";
         internal const string ExplorerProcessName = "explorer";
         internal const string SvcHostProcessName = "svchost";
         internal const string UserInitProcessName = "userinit";
