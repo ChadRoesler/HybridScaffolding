@@ -16,9 +16,10 @@ namespace HybridScaffolding
         /// <param name="scaffold">The scaffold built.</param>
         /// <param name="arguments">The console arguments.</param>
         /// <param name="type">The object to pass.</param>
-        public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type type)
+        /// <param name="defaultBehavior">The default RunType to use if unable to determine.</param>
+        public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type type, RunTypes defaultBehavior = RunTypes.Console)
         {
-            var processInfo = ParentProcess.ConsoleScaffolding();
+            var processInfo = ParentProcess.ConsoleScaffolding(defaultBehavior);
             scaffold.RunType = processInfo.RunType;
             scaffold.ProcessName = processInfo.ProcessName;
             scaffold.CommandName = processInfo.CommandName;

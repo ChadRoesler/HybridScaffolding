@@ -77,7 +77,7 @@ namespace HybridScaffolding.Workers
         /// Always pick the process over the command
         /// </summary>
         /// <returns>The ProcessInfo</returns>
-        internal static ProcessInfo ConsoleScaffolding()
+        internal static ProcessInfo ConsoleScaffolding(RunTypes defaultBehavior)
         {
             var command = GetParentProcess();
             var process = GetParentProcess(command.Id);
@@ -126,8 +126,11 @@ namespace HybridScaffolding.Workers
                 }
                 else
                 {
-                    AllocConsole();
-                    runType = RunTypes.Console;
+                    if (defaultBehavior == RunTypes.Console || defaultBehavior == RunTypes.Powershell)
+                    {
+                        AllocConsole();
+                    }
+                    runType = defaultBehavior;
                 }
             }
             catch
