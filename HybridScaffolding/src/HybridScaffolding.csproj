@@ -2,6 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Version>1.0.17.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Used for preping Hybrid applications (cli/gui applications).</Description>
+    <Company>Chad Roesler</Company>
+    <Authors>Chad Roesler</Authors>
+    <Copyright>2021</Copyright>
+    <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
+    <PackageIcon>HybridScaffolding.png</PackageIcon>
+    <PackageTags>Console CommandLine Forms HybridApplication Powershell DotNetCore NetStandard MVC</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Icons\HybridScaffolding.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
