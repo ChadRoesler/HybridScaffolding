@@ -1,17 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Version>1.0.17.0</Version>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>Resources\Icons\HybridScaffolding.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.18.0</AssemblyVersion>
+    <FileVersion>1.0.18.0</FileVersion>
+    <Version>1.0.18.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
+    <PackageReleaseNotes>Conversion to .net standard</PackageReleaseNotes>
+    <Authors>Chad Roesler</Authors>
     <Description>Used for preping Hybrid applications (cli/gui applications).</Description>
     <Company>Chad Roesler</Company>
     <Authors>Chad Roesler</Authors>
-    <Copyright>2021</Copyright>
     <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
     <PackageIcon>HybridScaffolding.png</PackageIcon>
     <PackageTags>Console CommandLine Forms HybridApplication Powershell DotNetCore NetStandard MVC</PackageTags>
+    <Copyright>2022</Copyright>
+    <PackageIcon>HybridScaffolding.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Release\HybridScaffolding.xml</DocumentationFile>
+    <OutputPath>bin\Release\netstandard2.1</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\netstandard2.1\</OutputPath>
+    <DocumentationFile>bin\Release\netstandard2.1\HybridScaffolding.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

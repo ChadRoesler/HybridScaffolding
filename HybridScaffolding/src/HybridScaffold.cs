@@ -10,12 +10,17 @@ namespace HybridScaffolding
         /// <summary>
         /// Returns and Sets the determined runtype.
         /// </summary>
-        public RunTypes RunType { get; internal set; }
+        public RunType RunType { get; internal set; }
 
         /// <summary>
         /// Returns and Sets the determined processname.
         /// </summary>
         public string ProcessName { get; internal set; }
+
+        /// <summary>
+        /// Default Run Type as a fallback for all others
+        /// </summary>
+        public RunType DefaultRunType { get; internal set; }
 
         /// <summary>
         /// Returns and Sets the determined commandname.
@@ -28,7 +33,7 @@ namespace HybridScaffolding
         /// <param name="arguments">The console arguments.</param>
         /// <param name="runType">Powershell or cmd.</param>
         /// <returns>Returns the console arguments passed.</returns>
-        public virtual string[] PreConsoleExec(string[] arguments, RunTypes runType)
+        public virtual string[] PreConsoleExec(string[] arguments, RunType runType)
         {
             return arguments;
         }
@@ -50,7 +55,7 @@ namespace HybridScaffolding
         /// <param name="arguments">The console arguments.</param>
         /// <param name="runType">Powershell or cmd.</param>
         /// <returns>Void</returns>
-        public virtual void ConsoleMain(string[] arguments, RunTypes runType)
+        public virtual void ConsoleMain(string[] arguments, RunType runType)
         {
         }
 

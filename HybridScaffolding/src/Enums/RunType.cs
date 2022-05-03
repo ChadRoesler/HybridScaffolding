@@ -3,7 +3,7 @@
     /// <summary>
     /// The determined RunTypes
     /// </summary>
-    public enum RunTypes
+    public enum RunType
     {
         /// <summary>
         /// Run from the Command Prompt

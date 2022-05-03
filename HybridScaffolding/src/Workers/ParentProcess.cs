@@ -1,10 +1,10 @@
-﻿using System;
+﻿using HybridScaffolding.Constants;
+using HybridScaffolding.Enums;
+using HybridScaffolding.Models;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using HybridScaffolding.Constants;
-using HybridScaffolding.Enums;
-using HybridScaffolding.Models;
 
 namespace HybridScaffolding.Workers
 {
@@ -55,7 +55,7 @@ namespace HybridScaffolding.Workers
         /// <returns>An instance of the Process class.</returns>
         private static Process GetParentProcess(IntPtr handle)
         {
-            ParentProcess pbi = new();
+            ParentProcess pbi = new ParentProcess();
             int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out _);
             if (status != 0)
                 throw new Win32Exception(status);
@@ -76,72 +76,74 @@ namespace HybridScaffolding.Workers
         /// Always pick the process over the command
         /// </summary>
         /// <returns>The ProcessInfo</returns>
-        internal static ProcessInfo ConsoleScaffolding(RunTypes defaultBehavior)
+        internal static ProcessInfo ConsoleScaffolding(RunType defaultRunType)
         {
-            var command = GetParentProcess();
-            var process = GetParentProcess(command.Id);
-            RunTypes runType;
+            var processInfo = new ProcessInfo(defaultRunType);
             try
             {
+                var command = GetParentProcess();
+                var process = GetParentProcess(command.Id);
+                RunType runType;
                 if (process != null && process.ProcessName == ResourceStrings.CmdProcessName)
                 {
                     AttachConsole(process.Id);
-                    runType = RunTypes.Console;
+                    runType = RunType.Console;
                 }
                 else if (command.ProcessName == ResourceStrings.CmdProcessName)
                 {
                     AttachConsole(-1);
-                    runType = RunTypes.Console;
+                    runType = RunType.Console;
                 }
-                else if (process != null && process.ProcessName.Contains(ResourceStrings.PowerShellProcessName))
+                else if (process != null && (process.ProcessName.Contains(ResourceStrings.PowerShellProcessName) || process.ProcessName.Contains(ResourceStrings.PwshProcessName)))
                 {
                     AttachConsole(process.Id);
-                    runType = RunTypes.Powershell;
+                    runType = RunType.Powershell;
                 }
-                else if (command.ProcessName.Contains(ResourceStrings.PowerShellProcessName))
+                else if (command.ProcessName.Contains(ResourceStrings.PowerShellProcessName) || command.ProcessName.Contains(ResourceStrings.PwshProcessName))
                 {
                     AttachConsole(-1);
-                    runType = RunTypes.Powershell;
+                    runType = RunType.Powershell;
                 }
                 else if (process != null && process.ProcessName.Contains(ResourceStrings.PwshProcessName))
                 {
                     AttachConsole(process.Id);
-                    runType = RunTypes.Powershell;
+                    runType = RunType.Powershell;
                 }
                 else if (command.ProcessName.Contains(ResourceStrings.PwshProcessName))
                 {
                     AttachConsole(process.Id);
-                    runType = RunTypes.Powershell;
+                    runType = RunType.Powershell;
                 }
                 else if (process != null && (process.ProcessName == ResourceStrings.ExplorerProcessName || process.ProcessName == ResourceStrings.SvcHostProcessName || process.ProcessName == ResourceStrings.UserInitProcessName || process.ProcessName == ResourceStrings.DevEnvProcessName || process.ProcessName == ResourceStrings.IisExpressProcessName))
                 {
-                    runType = RunTypes.Gui;
+                    runType = RunType.Gui;
                 }
-                else if (command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName)
+                else if (command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName || command.ProcessName == ResourceStrings.DevEnvProcessName)
                 {
-                    runType = RunTypes.Gui;
+                    runType = RunType.Gui;
                 }
                 else
                 {
-                    if (defaultBehavior == RunTypes.Console || defaultBehavior == RunTypes.Powershell)
+                    if (defaultRunType == RunType.Console || defaultRunType == RunType.Powershell)
                     {
                         AllocConsole();
                     }
-                    runType = defaultBehavior;
+                    runType = defaultRunType;
                 }
+                processInfo = new ProcessInfo
+                {
+                    RunType = runType,
+                    CommandName = command.ProcessName,
+                    ProcessName = process?.ProcessName
+                };
             }
             catch
             {
-                AttachConsole(-1);
-                runType = RunTypes.Console;
+                if (defaultRunType != RunType.Gui)
+                {
+                    AttachConsole(-1);
+                }
             }
-            var processInfo = new ProcessInfo
-            {
-                RunType = runType,
-                CommandName = command.ProcessName,
-                ProcessName = process.ProcessName
-            };
-
             return processInfo;
         }
     }
