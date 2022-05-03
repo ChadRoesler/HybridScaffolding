@@ -13,23 +13,25 @@ http://stackoverflow.com/questions/394816/how-to-get-parent-process-in-net-in-ma
 
 static void Main(string[] arguments)
 {
+    Application.EnableVisualStyles();
+    Application.SetCompatibleTextRenderingDefault(false);
     var yourScaffold = new YourScaffoldModel();
 
     try
     {
-        HybridExecutor.DispatchExecutor(yourScaffold, arguments, typeof(formOfYourChoice));
+        HybridExecutor.DispatchExecutor(yourScaffold, arguments, typeof(formOfYourChoice), RunType.Gui);
     }
     catch (Exception ex)
     {
-        if(yourScaffold.RunType == RunTypes.Console)
+        if(yourScaffold.RunType == RunType.Console)
         {
             Console.WriteLine(ex.Message);
         }
-        if(yourScaffold.RunType == RunTypes.Powershell)
+        if(yourScaffold.RunType == RunType.Powershell)
         {
             PoshHandler.WriteError(ex.Message)
         }
-        if(yourScaffold.RunType == RunTypes.Gui)
+        if(yourScaffold.RunType == RunType.Gui)
         {
             MessageBox.Show(ex.Message);
         }
