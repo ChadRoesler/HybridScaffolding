@@ -1,7 +1,7 @@
-﻿using System;
-using HybridScaffolding.Constants;
+﻿using HybridScaffolding.Constants;
 using HybridScaffolding.Enums;
 using HybridScaffolding.Workers;
+using System;
 
 namespace HybridScaffolding
 {
@@ -13,12 +13,13 @@ namespace HybridScaffolding
         /// <summary>
         /// Determines the run type and executes the built scaffold appropriately.
         /// </summary>
+        /// <param name="defaultRunType">The default run type the application will fall back to</param>
         /// <param name="scaffold">The scaffold built.</param>
         /// <param name="arguments">The console arguments.</param>
         /// <param name="type">The object to pass.</param>
-        public static void DispatchExecutor(HybridScaffold scaffold, string[] arguments, Type type)
+        public static void DispatchExecutor(RunTypes defaultRunType, HybridScaffold scaffold, string[] arguments, Type type)
         {
-            var processInfo = ParentProcess.ConsoleScaffolding();
+            var processInfo = ParentProcess.ConsoleScaffolding(defaultRunType);
             scaffold.RunType = processInfo.RunType;
             scaffold.ProcessName = processInfo.ProcessName;
             scaffold.CommandName = processInfo.CommandName;

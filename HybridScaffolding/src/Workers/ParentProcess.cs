@@ -1,10 +1,10 @@
-﻿using System;
+﻿using HybridScaffolding.Constants;
+using HybridScaffolding.Enums;
+using HybridScaffolding.Models;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using HybridScaffolding.Constants;
-using HybridScaffolding.Enums;
-using HybridScaffolding.Models;
 
 namespace HybridScaffolding.Workers
 {
@@ -12,12 +12,12 @@ namespace HybridScaffolding.Workers
     internal struct ParentProcess
     {
         // These members must match PROCESS_BASIC_INFORMATION
-        private IntPtr Reserved1;
-        private IntPtr PebBaseAddress;
-        private IntPtr Reserved2_0;
-        private IntPtr Reserved2_1;
-        private IntPtr UniqueProcessId;
-        private IntPtr InheritedFromUniqueProcessId;
+        private readonly IntPtr Reserved1;
+        private readonly IntPtr PebBaseAddress;
+        private readonly IntPtr Reserved2_0;
+        private readonly IntPtr Reserved2_1;
+        private readonly IntPtr UniqueProcessId;
+        private readonly IntPtr InheritedFromUniqueProcessId;
 
         [DllImport("ntdll.dll")]
         private static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass, ref ParentProcess processInformation, int processInformationLength, out int returnLength);
@@ -56,8 +56,7 @@ namespace HybridScaffolding.Workers
         private static Process GetParentProcess(IntPtr handle)
         {
             ParentProcess pbi = new ParentProcess();
-            int returnLength;
-            int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
+            int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out _);
             if (status != 0)
                 throw new Win32Exception(status);
 
@@ -77,15 +76,17 @@ namespace HybridScaffolding.Workers
         /// Always pick the process over the command
         /// </summary>
         /// <returns>The ProcessInfo</returns>
-        internal static ProcessInfo ConsoleScaffolding()
+        internal static ProcessInfo ConsoleScaffolding(RunTypes DefaultBehavior)
         {
-            var command = GetParentProcess();
-            var process = GetParentProcess(command.Id);
-            var runType = RunTypes.Console;
-
-
+            var processInfo = new ProcessInfo
+            {
+                RunType = DefaultBehavior
+            };
             try
             {
+                var command = GetParentProcess();
+                var process = GetParentProcess(command.Id);
+                RunTypes runType;
                 if (process != null && process.ProcessName == ResourceStrings.CmdProcessName)
                 {
                     AttachConsole(process.Id);
@@ -96,12 +97,12 @@ namespace HybridScaffolding.Workers
                     AttachConsole(-1);
                     runType = RunTypes.Console;
                 }
-                else if (process != null && process.ProcessName.Contains(ResourceStrings.PowerShellProcessName))
+                else if (process != null && (process.ProcessName.Contains(ResourceStrings.PowerShellProcessName) || process.ProcessName.Contains(ResourceStrings.PowershellPwshProcessName)))
                 {
                     AttachConsole(process.Id);
                     runType = RunTypes.Powershell;
                 }
-                else if (command.ProcessName.Contains(ResourceStrings.PowerShellProcessName))
+                else if (command.ProcessName.Contains(ResourceStrings.PowerShellProcessName) || command.ProcessName.Contains(ResourceStrings.PowershellPwshProcessName))
                 {
                     AttachConsole(-1);
                     runType = RunTypes.Powershell;
@@ -110,7 +111,7 @@ namespace HybridScaffolding.Workers
                 {
                     runType = RunTypes.Gui;
                 }
-                else if (command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName)
+                else if (command.ProcessName == ResourceStrings.ExplorerProcessName || command.ProcessName == ResourceStrings.SvcHostProcessName || command.ProcessName == ResourceStrings.UserInitProcessName || command.ProcessName == ResourceStrings.MsVsMonProcessName || command.ProcessName == ResourceStrings.VsIisLaucherProcessName || command.ProcessName == ResourceStrings.W3wpProcessName || command.ProcessName == ResourceStrings.DevEnvProcessName)
                 {
                     runType = RunTypes.Gui;
                 }
@@ -119,17 +120,20 @@ namespace HybridScaffolding.Workers
                     AllocConsole();
                     runType = RunTypes.Console;
                 }
+                processInfo = new ProcessInfo
+                {
+                    RunType = runType,
+                    CommandName = command.ProcessName,
+                    ProcessName = process?.ProcessName
+                };
             }
             catch
             {
-                AttachConsole(-1);
-                runType = RunTypes.Console;
+                if (DefaultBehavior != RunTypes.Gui)
+                {
+                    AttachConsole(-1);
+                }
             }
-            var processInfo = new ProcessInfo();
-            processInfo.RunType = runType;
-            processInfo.CommandName = command.ProcessName;
-            processInfo.ProcessName = process.ProcessName;
-
             return processInfo;
         }
     }

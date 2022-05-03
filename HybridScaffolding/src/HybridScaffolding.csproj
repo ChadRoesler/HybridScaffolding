@@ -2,28 +2,36 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ApplicationIcon>Resouces\Icons\HybridScaffolding.ico</ApplicationIcon>
-    <AssemblyVersion>1.0.13.0</AssemblyVersion>
+    <ApplicationIcon>Resources\Icons\HybridScaffolding.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.18.0</AssemblyVersion>
     <FileVersion>1.0.13.0</FileVersion>
-    <Version>1.0.13.0</Version>
+    <Version>1.0.18.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl>https://raw.githubusercontent.com/ChadRoesler/HybridScaffolding/master/HybridScaffolding/src/Resouces/Icons/HybridScaffolding.ico</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
     <PackageReleaseNotes>Conversion to .net standard</PackageReleaseNotes>
     <Authors>Chad Roesler</Authors>
     <Description>Used for preping Hybrid applications (cli/gui applications).</Description>
     <PackageTags>Console CommandLine Forms HybridApplication Powershell DotNetCore NetStandard MVC</PackageTags>
     <Copyright>2016</Copyright>
+    <PackageIcon>HybridScaffolding.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Release\HybridScaffolding.xml</DocumentationFile>
-    <OutputPath>bin\Release\netstandard2.0</OutputPath>
+    <OutputPath>bin\Release\netstandard2.1</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\netstandard2.0\</OutputPath>
-    <DocumentationFile>bin\Release\netstandard2.0\HybridScaffolding.xml</DocumentationFile>
+    <OutputPath>bin\Release\netstandard2.1\</OutputPath>
+    <DocumentationFile>bin\Release\netstandard2.1\HybridScaffolding.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Icons\HybridScaffolding.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

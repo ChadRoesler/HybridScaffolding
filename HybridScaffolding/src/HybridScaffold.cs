@@ -18,6 +18,11 @@ namespace HybridScaffolding
         public string ProcessName { get; internal set; }
 
         /// <summary>
+        /// Default Run Type as a fallback for all others
+        /// </summary>
+        public RunTypes DefaultRunType { get; internal set; }
+
+        /// <summary>
         /// Returns and Sets the determined commandname.
         /// </summary>
         public string CommandName { get; internal set; }

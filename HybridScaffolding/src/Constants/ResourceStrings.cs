@@ -12,5 +12,6 @@
         internal const string IisExpressProcessName = "iisexpress";
         internal const string VsIisLaucherProcessName = "VSIISExeLauncher";
         internal const string W3wpProcessName = "w3wp";
+        internal const string PowershellPwshProcessName = "pwsh";
     }
 }
