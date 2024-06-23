@@ -1,23 +1,28 @@
 ﻿namespace HybridScaffolding.Enums
 {
     /// <summary>
-    /// The determined RunTypes
+    /// Defines the various types of execution contexts for the application.
     /// </summary>
     public enum RunType
     {
         /// <summary>
-        /// Run from the Command Prompt
+        /// Indicates the application is running from the Command Prompt.
         /// </summary>
         Console = 0,
 
         /// <summary>
-        /// Run from Powershell
+        /// Indicates the application is running from PowerShell.
         /// </summary>
         Powershell = 1,
 
         /// <summary>
-        /// Either run by svchost or explorer.
+        /// Indicates the application is running with a Graphical User Interface (GUI), typically initiated by the user through a graphical desktop environment.
         /// </summary>
-        Gui = 2
+        Gui = 2,
+
+        /// <summary>
+        /// Indicates the application is running as a service, typically managed by the operating system's service control manager.
+        /// </summary>
+        Service = 3
     }
 }

@@ -1,23 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ApplicationIcon>Resources\Icons\HybridScaffolding.ico</ApplicationIcon>
-    <AssemblyVersion>1.0.18.0</AssemblyVersion>
-    <FileVersion>1.0.18.0</FileVersion>
-    <Version>1.0.18.0</Version>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
-    <PackageReleaseNotes>Conversion to .net standard</PackageReleaseNotes>
+    <PackageReleaseNotes>Addition of Services</PackageReleaseNotes>
     <Authors>Chad Roesler</Authors>
-    <Description>Used for preping Hybrid applications (cli/gui applications).</Description>
+    <Description>Used for preping Hybrid applications (cli/gui/service applications).</Description>
     <Company>Chad Roesler</Company>
     <Authors>Chad Roesler</Authors>
     <PackageProjectUrl>https://github.com/ChadRoesler/HybridScaffolding</PackageProjectUrl>
     <PackageIcon>HybridScaffolding.png</PackageIcon>
     <PackageTags>Console CommandLine Forms HybridApplication Powershell DotNetCore NetStandard MVC</PackageTags>
-    <Copyright>2022</Copyright>
+    <Copyright>2024</Copyright>
     <PackageIcon>HybridScaffolding.png</PackageIcon>
   </PropertyGroup>
 

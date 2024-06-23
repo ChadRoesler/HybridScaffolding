@@ -3,65 +3,66 @@
 namespace HybridScaffolding
 {
     /// <summary>
-    /// The abstract class used for implmenting the overrides for pre and console execution.
+    /// Represents the base class for a scaffolded application, providing hooks for pre-execution and main execution methods across different run types (Console, GUI, Service).
     /// </summary>
     public abstract class HybridScaffold
     {
         /// <summary>
-        /// Returns and Sets the determined runtype.
+        /// Gets or sets the run type of the scaffolded application.
         /// </summary>
         public RunType RunType { get; internal set; }
 
         /// <summary>
-        /// Returns and Sets the determined processname.
+        /// Gets or sets the process name of the scaffolded application.
         /// </summary>
         public string ProcessName { get; internal set; }
 
         /// <summary>
-        /// Returns and Sets the determined commandname.
+        /// Gets or sets the command name for the scaffolded application.
         /// </summary>
         public string CommandName { get; internal set; }
 
         /// <summary>
-        /// Runs pre Console Execution, also allows for manipulation of the arguments as needed.
+        /// Provides a hook for pre-execution logic in console mode.
         /// </summary>
-        /// <param name="arguments">The console arguments.</param>
-        /// <param name="runType">Powershell or cmd.</param>
-        /// <returns>Returns the console arguments passed.</returns>
-        public virtual string[] PreConsoleExec(string[] arguments, RunType runType)
-        {
-            return arguments;
-        }
+        /// <param name="arguments">The arguments passed to the console application.</param>
+        /// <param name="runType">The run type of the application.</param>
+        /// <returns>The potentially modified arguments for the console application.</returns>
+        public virtual string[] PreConsoleExec(string[] arguments, RunType runType) => arguments;
 
         /// <summary>
-        /// Runs pre Gui Execution, also allows for manipuation of the forms as needed.
+        /// Provides a hook for pre-execution logic in GUI mode.
         /// </summary>
-        /// /// <param name="arguments">The console arguments.</param>
-        /// <param name="passableObject">The object to manage.</param>
-        /// <returns>Returns the Form passed.</returns>
-        public virtual object PreGuiExec(string[] arguments, object passableObject)
-        {
-            return passableObject;
-        }
+        /// <param name="arguments">The arguments passed to the GUI application.</param>
+        /// <param name="passableObject">An object that can be passed to the GUI application for further use.</param>
+        /// <returns>The potentially modified passable object for the GUI application.</returns>
+        public virtual object PreGuiExec(string[] arguments, object passableObject) => passableObject;
 
         /// <summary>
-        /// This is what the Console will execute.
+        /// Provides a hook for pre-execution logic in service mode.
         /// </summary>
-        /// <param name="arguments">The console arguments.</param>
-        /// <param name="runType">Powershell or cmd.</param>
-        /// <returns>Void</returns>
-        public virtual void ConsoleMain(string[] arguments, RunType runType)
-        {
-        }
+        /// <param name="arguments">The arguments passed to the service application.</param>
+        /// <returns>The potentially modified arguments for the service application.</returns>
+        public virtual string[] PreServiceExec(string[] arguments) => arguments;
 
         /// <summary>
-        /// This is what the GUI will execute.
+        /// The main execution method for console mode.
         /// </summary>
-        /// <param name="arguments">The console arguments.</param>
-        /// <param name="passableObject">The object to manage.</param>
-        /// <returns>Void</returns>
-        public virtual void GuiMain(string[] arguments, object passableObject)
-        {
-        }
+        /// <param name="arguments">The arguments for the console application.</param>
+        /// <param name="runType">The run type of the application.</param>
+        public virtual void ConsoleMain(string[] arguments, RunType runType) { }
+
+        /// <summary>
+        /// The main execution method for GUI mode.
+        /// </summary>
+        /// <param name="arguments">The arguments for the GUI application.</param>
+        /// <param name="passableObject">An object that can be passed to the GUI application for further use.</param>
+        public virtual void GuiMain(string[] arguments, object passableObject) { }
+
+        /// <summary>
+        /// The main execution method for service mode.
+        /// </summary>
+        /// <param name="arguments">The arguments for the service application.</param>
+        public virtual void ServiceMain(string[] arguments) { }
     }
 }
